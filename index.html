@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subharthi Bose | Futuristic Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00f7ff;
+            --secondary: #ff00e4;
+            --dark: #0a0a1a;
+            --light: #e0e0ff;
+            --accent: #7b2dff;
+            --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+            --neon-glow-secondary: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
+        }
+        
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Particle background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+        
+        /* Glitch text effect */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            color: var(--secondary);
+            animation: glitch-effect 3s infinite;
+            z-index: -2;
+        }
+        
+        .glitch::after {
+            color: var(--primary);
+            animation: glitch-effect 2s infinite reverse;
+            z-index: -1;
+        }
+        
+        @keyframes glitch-effect {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+        
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header section */
+        header {
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,247,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        .profile-img-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            box-shadow: var(--neon-glow);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .profile-img-container:hover {
+            box-shadow: var(--neon-glow-secondary);
+            transform: scale(1.05);
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%) contrast(110%);
+        }
+        
+        .profile-img-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 247, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tagline::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: expandLine 2s forwards;
+        }
+        
+        @keyframes expandLine {
+            to { transform: scaleX(1); }
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .contact-info a {
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.4), transparent);
+            transition: all 0.5s;
+        }
+        
+        .contact-info a:hover {
+            background: rgba(0, 247, 255, 0.2);
+            box-shadow: 0 0 10px var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .contact-info a:hover::before {
+            left: 100%;
+        }
+        
+        .contact-info i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Main sections */
+        section {
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(123, 45, 255, 0.05), transparent);
+            z-index: -1;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        /* About section */
+        #about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            background: rgba(10, 10, 26, 0.7);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.1);
+        }
+        
+        /* Education section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 2rem);
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 2rem);
+            text-align: left;
+        }
+        
+        .timeline-content {
+            padding: 1.5rem;
+            background: rgba(10, 10, 26, 0.8);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 247, 255, 0.2);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--primary);
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            background: var(--secondary);
+            box-shadow: 0 0 10px var(--secondary);
+        }
+        
+        .timeline-date {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid var(--primary);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            color: var(--secondary);
+            border-color: var(--secondary);
+            background: rgba(255, 0, 228, 0.1);
+        }
+        
+        /* Skills section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background: rgba(10, 10, 26, 0.8);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .skill-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .skill-item {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .skill-item::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        .skill-name {
+            font-weight: bold;
+        }
+        
+        /* Projects section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: rgba(10, 10, 26, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 247, 255, 0.3);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(0, 247, 255, 0.1), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .project-content p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Certificates & Achievements */
+        .certificates-list, .achievements-list {
+            list-style-type: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .certificates-list li, .achievements-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(10, 10, 26, 0.8);
+            border-radius: 5px;
+            border-left: 3px solid var(--primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .certificates-list li:hover, .achievements-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+        }
+        
+        .certificates-list li::before, .achievements-list li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        /* Resume button */
+        .resume-download {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 247, 255, 0.6);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            background: rgba(10, 10, 26, 0.8);
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(0,247,255,0.03)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 2rem;
+            }
+            
+            .timeline-item:nth-child(odd), 
+            .timeline-item:nth-child(even) {
+                padding-left: 5rem;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-item::before {
+                left: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-info a {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .skills-grid, .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle.js Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="profile-img-container floating">
+                <img src="images/PHOTO.jpg" alt="Subharthi Bose" class="profile-img">
+            </div>
+            <h1 class="glitch" data-text="Subharthi Bose">Subharthi Bose</h1>
+            <p class="tagline">Computer Science Engineering Student | Developer | Tech Enthusiast</p>
+            <div class="contact-info">
+                <a href="mailto:subharthiboseofficial@gmail.com">
+                    <i class="fas fa-envelope"></i> subharthiboseofficial@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/subharthi-bose-378476336" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="tel:+919903342512">
+                    <i class="fas fa-phone"></i> +91 9903342512
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am a motivated and enthusiastic 2nd-year B.Tech Computer Science Engineering (Core) student at SRM Institute of Science and Technology with a CGPA of 9.05. 
+                I'm passionate about programming, software development, and problem-solving. I enjoy working on projects that challenge me and help me grow 
+                as a developer. My current focus is on expanding my knowledge in web development and data structures while seeking internship opportunities
+                to apply my skills in real-world scenarios.
+            </p>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024 - 2028 (Expected)</span>
+                        <h3>SRM Institute of Science and Technology, Chennai</h3>
+                        <p>B.Tech in Computer Science and Engineering (Core)</p>
+                        <p>Current Year: 2nd Year | CGPA: 9.05</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Year of Completion: 2022</span>
+                        <h3>Modern English Academy, Barrackpore</h3>
+                        <p>Higher Secondary Education (Class 12)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Year of Completion: 2020</span>
+                        <h3>Modern English Academy, Barrackpore</h3>
+                        <p>Secondary Education (Class 10)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">C</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">C++</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Java</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">HTML</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">CSS</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Concepts</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">VS Code</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Object-Oriented Programming</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Data Structures & Algorithms</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Portfolio Website</h3>
+                        <p>Designed and developed a personal portfolio website using HTML and CSS to showcase my skills, education, and projects.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Drone Project</h3>
+                        <p>Built and flew a drone at SRM campus as part of a hands-on workshop, learning about aerodynamics and remote control systems.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Student Management System</h3>
+                        <p>Developed a console-based system using C++ to manage student records with file handling and a menu-driven interface.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certificates Section -->
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <ul class="certificates-list">
+                <li>Introduction to Web Development - Udemy</li>
+                <li>Data Structure and Algorithm in Java - Udemy</li>
+            </ul>
+        </section>
+        
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <h2>Achievements & Workshops</h2>
+            <ul class="achievements-list">
+                <li>Participated in Drone Making hands-on workshop</li>
+                <li>Participated in IoT-Based Projects workshop</li>
+            </ul>
+        </section>
+        
+        <!-- Soft Skills Section -->
+        <section id="soft-skills">
+            <h2>Soft Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-item">
+                        <span class="skill-name">Good Communication</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Quick Learner</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-item">
+                        <span class="skill-name">Team Collaboration</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Resume Download -->
+        <div class="resume-download">
+            <a href="Subharthi_Bose_Internship_Resume-Updated.pdf" download class="btn">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/subharthi-bose-378476336" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:subharthiboseofficial@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+919903342512"><i class="fas fa-phone"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Subharthi Bose. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Particle.js Script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#00f7ff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#00f7ff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+        
+        // Add scroll animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        });
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
